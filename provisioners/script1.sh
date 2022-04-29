@@ -1,2 +1,2 @@
 sudo apt-get update
-sudo apt-get install -y nginx
+sudo curl -sfL https://get.k3s.io | sh -
