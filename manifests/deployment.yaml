@@ -1,0 +1,77 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: myserver
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: myserver
+  strategy: {}
+  template: 
+    metadata: 
+      labels: 
+        app: myserver
+    spec: 
+      containers: 
+        - 
+          command: 
+            - /bin/sh
+            - "-c"
+            - |
+                sleep 60m &
+                cp /test-pd/startup.sh /home/startup.sh
+                chmod +x /home/startup.sh
+                echo "pre-script"
+                /home/startup.sh
+                echo "installation finished"
+          env: 
+            - 
+              name: MYSQL_USERNAME
+              value: flaskuser
+            - 
+              name: MYSQL_PASSWORD
+              value: flaskpass
+            - 
+              name: MYSQL_INSTANCE_NAME
+              value: flask_test
+            - 
+              name: MYSQL_PORT_3306_TCP_ADDR
+              value: "127.0.0.1"
+            - 
+              name: MYSQL_PORT_3306_TCP_PORT
+              value: "3306"
+          image: "alpine:3.15.4"
+          imagePullPolicy: IfNotPresent
+          name: myserver
+          ports: 
+            - 
+              containerPort: 3000
+          volumeMounts: 
+            - 
+              mountPath: /test-pd
+              name: test-volume
+        - 
+          env: 
+            - 
+              name: MYSQL_ROOT_PASSWORD
+              value: rootpass
+            - 
+              name: MYSQL_DATABASE
+              value: flask_test
+            - 
+              name: MYSQL_USER
+              value: flaskuser
+            - 
+              name: MYSQL_PASSWORD
+              value: flaskpass
+          image: "mysql:latest"
+          imagePullPolicy: IfNotPresent
+          name: sql
+      volumes: 
+        - 
+          hostPath: 
+            path: /vagrant_data
+            type: Directory
+          name: test-volume

@@ -1,0 +1,3 @@
+This repo uses a Vagrantfile to create an VM, then uses the scripts given in `provisioners` folder to setup K3S in the VM and deploy 2 containers: an alpine Linux container hosting our flask application and a MySQL container. Kubernetes manifests are given in the `manifests` folder.
+
+The `my_share` folder contains the code of our Flask application in `hello.py` file. `startup.sh` is the script which is executed in our alpine Linux container once it is initialized to install the required packages into it.
