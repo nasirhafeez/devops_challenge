@@ -7,4 +7,5 @@ To boot this setup enter the `vagrant up` command. It will create an Ubuntu VM, 
 References:
 
 [Vagrant](https://www.linkedin.com/learning/learning-vagrant/)
+
 [Vagrant and K3S](https://levelup.gitconnected.com/local-kubernetes-development-using-vagrant-and-k3s-547bd5687a7f)
