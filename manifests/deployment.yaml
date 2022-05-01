@@ -23,9 +23,7 @@ spec:
                 sleep 60m &
                 cp /test-pd/startup.sh /home/startup.sh
                 chmod +x /home/startup.sh
-                echo "pre-script"
                 /home/startup.sh
-                echo "installation finished"
           env: 
             - 
               name: MYSQL_USERNAME
