@@ -2,7 +2,7 @@ This repo uses a Vagrantfile to create a VM. Then it uses the scripts given in `
 
 The `my_share` folder is a shared folder between the host and Vagrant VM, and it is also mounted as a volume on the container running our application. It contains the code of our Flask application in `hello.py` file. The script `startup.sh` is executed in our Alpine Linux container once it is initialized to install the required packages into it.
 
-To boot this setup enter the `vagrant up` command. It will create an Ubuntu VM, create a Kubernetes cluster in it and deployment our containers. After doing this, our application will be accessible locally on `http://127.0.0.1:3000`. After making any change in the `hello.py` file on the host machine simply refresh the browser, the changes should be visible instantly.
+To boot this setup enter the `vagrant up` command. It will create an Ubuntu VM, create a Kubernetes cluster in it and deploy our containers. After doing this, our application will be accessible locally on `http://127.0.0.1:3000`. After making any change in the `hello.py` file on the host machine simply refresh the browser, the changes should be visible instantly.
 
 References:
 
